@@ -106,4 +106,7 @@ def main():
     tts_processor = TTSProcessor("tts_models/fr/mai/tacotron2-DDC", db_params)
 
     # Generate speech for each paragraph in the database
-    tts_processor.generate_audio
+    tts_processor.generate_audio_for_paragraphs()
+
+if __name__ == "__main__":
+    main()

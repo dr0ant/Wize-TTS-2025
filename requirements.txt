@@ -2,4 +2,7 @@ TTS
 psycopg2
 dagster
 torch
-
+pyicloud-ipd
+pyicloud
+dbt
+dbt-postgres

@@ -1,0 +1,14 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "100.72.70.102",
+            "port": 5433,
+            "driver": "PostgreSQL",
+            "name": "WizeCosmdb",
+            "database": "wizecosm_NAS",
+            "username": "dr0ant",
+            "password": "°889"
+        }
+    ]
+}

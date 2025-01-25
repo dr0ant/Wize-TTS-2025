@@ -93,6 +93,9 @@ The main goal of this project is to automate the following processes:
     ```
 
 3. **Generate Speeches:**
+    link to TTS doc : https://docs.coqui.ai/en/latest/models/xtts.html
+
+
     Run the Python script to generate speech for each paragraph using the TTS API.
     ```bash
     python generate_speech.py

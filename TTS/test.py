@@ -1,7 +1,7 @@
-import torch
-if torch.backends.mps.is_available():
-    mps_device = torch.device("mps")
-    x = torch.ones(1, device=mps_device)
-    print(x)
-else:
-    print("MPS device not found.")
+from TTS.api import TTS
+
+# Load the model
+tts = TTS(model_name="tts_models/multilingual/multi-dataset/xtts_v2")
+
+# List available speakers
+print(tts.speakers)

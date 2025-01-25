@@ -18,13 +18,12 @@ class TTSProcessor:
     def __init__(self, model_name: str, db_params: dict, device: str = None):
         """
         Initializes the TTSProcessor with a specific model and database parameters.
-        
         :param model_name: The name of the TTS model to use
         :param db_params: Dictionary with PostgreSQL connection parameters
         :param device: The device to use for processing, defaults to 'cuda' if available, else 'cpu'
         """
-        logger.info(f"Initializing TTSProcessor with model: {model_name} and device: {self.device}")
-        self.device = device or ("cuda" if torch.cuda.is_available() else "cpu")
+        self.device = device or ("cuda" if torch.cuda.is_available() else "cpu")  # Assign device here
+        logger.info(f"Initializing TTSProcessor with model: {model_name} and device: {self.device}")  # Now logging works correctly
         self.db_params = db_params
         self.tts = TTS(model_name).to(self.device)
         logger.info(f"TTS model {model_name} loaded successfully on device {self.device}")
@@ -102,20 +101,9 @@ def main():
         'user': 'dr0ant',
         'password': '°889'
     }
-
-    # Get device
-    device = "cuda" if torch.cuda.is_available() else "cpu"
-    logger.info(f"Using device: {device}")
-
-    # Initialize the TTS model with pre-trained speakers
-    tts = TTS("tts_models/fr/mai/tacotron2-DDC").to(device)
-    logger.info(f"TTS model loaded successfully on {device}")
-
-    # Initialize the TTSProcessor with the model and db_params
+    
+    # Initialize the TTSProcessor with the model you want to use and the db_params
     tts_processor = TTSProcessor("tts_models/fr/mai/tacotron2-DDC", db_params)
 
     # Generate speech for each paragraph in the database
-    tts_processor.generate_audio_for_paragraphs()
-
-if __name__ == "__main__":
-    main()
+    tts_processor.generate_audio

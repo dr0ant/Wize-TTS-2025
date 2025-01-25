@@ -123,7 +123,7 @@ if __name__ == "__main__":
     }
 
     # Specify the speaker (if applicable)
-    speaker_name = "Filip Traverse"  # Replace with your desired speaker name
+    speaker_name = "Xavier Hayasaka"  # Replace with your desired speaker name
 
     # Initialize TTSProcessor
     processor = TTSProcessor(

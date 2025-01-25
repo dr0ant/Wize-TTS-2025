@@ -57,39 +57,4 @@ cleaned_text AS (
                 ),
                 '...', '...'
             ),
-            '\\s+', ' ', 'g'
-        ) AS content_step_5,
-
-        -- Remove underscores
-        REPLACE(
-            REGEXP_REPLACE(
-                REPLACE(
-                    REPLACE(
-                        REPLACE(REPLACE(paragraphe_content, '“', '"'), '”', '"'),
-                        '"""', '«'
-                    ),
-                    '...', '...'
-                ),
-                '\\s+', ' ', 'g'
-            ),
-            '_', ''
-        ) AS content_step_6
-    FROM raw_text
-),
-final_cleaned_text AS (
-    SELECT
-        note_name,
-        content_id,
-        paragrapge_order,
-        paragraphe_content,
-        -- Use proper sentence segmentation, if needed. Example of handling sentence breaks
-        REGEXP_REPLACE(content_step_6, '(\\.|\\?|!)(\\s)', '\\1\\2') AS cleaned_content  -- Ensures punctuation is followed by space
-    FROM cleaned_text
-)
-
-SELECT
-    note_name,
-    content_id,
-    paragrapge_order,
-    cleaned_content AS content
-FROM final_cleaned_text
+   

@@ -4,5 +4,3 @@ dagster
 torch
 pyicloud-ipd
 pyicloud
-dbt
-dbt-postgres

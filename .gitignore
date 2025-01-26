@@ -161,3 +161,5 @@ cython_debug/
 #.idea/
 config/conf.yaml
 *.wav
+icloud/usage.py
+TTS_gtts/usage.py

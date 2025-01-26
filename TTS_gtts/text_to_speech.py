@@ -94,22 +94,3 @@ class TTSProcessor:
             self.process_text_to_speech(text, output_filename)
 
 
-#if __name__ == "__main__":
-#    # PostgreSQL connection parameters
-#    db_params = {
-#        "host": "100.72.70.102",  # Replace with your host
-#        "port": "5433",           # Replace with your port
-#        "database": "wizecosm_NAS",
-#        "user": "dr0ant",
-#        "password": "°889"
-#    }
-#
-#    # Initialize TTSProcessor
-#    processor = TTSProcessor(
-#        db_params=db_params,
-#        output_dir="generated_audio"  # Directory to save audio files
-#    )
-#
-#    # Generate audio for all paragraphs
-#    processor.generate_audio_for_paragraphs()
-#

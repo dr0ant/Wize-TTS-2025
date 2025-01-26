@@ -110,18 +110,4 @@ class ICloudConnection:
             logger.error(f"Error downloading file {drive_file.name}: {e}")
             raise
 
-# Usage example
-#if __name__ == "__main__":
-#    username = "larcher.antoine@hotmail.fr"
-#    password = "WizeCosm1995!!"
-#
-#    # List of different file structures (you can add as many as needed)
-#    file_paths = [
-#        ['Obsidian', 'WizeCosm', '04 - Arcs', '01 - Phase 1', 'Phase 1 - les Séquelles de la guerre.md'],
-#        ['Obsidian', 'WizeCosm', '04 - Arcs', '02 - Phase 2','Phase 2 - Mia.md']
-#    ]
-#
-#    # Create and execute multiple instances for different files
-#    for path in file_paths:
-#        icloud_connection = ICloudConnection(username, password, path)
-#        icloud_connection.load_md_files()
+

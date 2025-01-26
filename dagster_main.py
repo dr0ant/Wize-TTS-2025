@@ -52,8 +52,14 @@ def load_icloud_files(context):
     # List of file paths to be loaded
     file_paths = [
         ['Obsidian', 'WizeCosm', '04 - Arcs', '01 - Phase 1', 'Phase 1 - les Séquelles de la guerre.md'],
-        ['Obsidian', 'WizeCosm', '04 - Arcs', '02 - Phase 2', 'Phase 2 - Mia.md']
+        ['Obsidian', 'WizeCosm', '04 - Arcs', '02 - Phase 2', 'Phase 2 - Mia.md'],
+        ['Obsidian', 'WizeCosm', '04 - Arcs', '03 - Phase 3', 'Phase 3 - La pluie d\'étoiles.md'],
+        ['Obsidian', 'WizeCosm', '04 - Arcs', '04 - Phase 4', 'Phase 4 - L\'équipage.md'],
+        ['Obsidian', 'WizeCosm', '04 - Arcs', '05 - Arc 1', 'PART 01', 'Partie 1 - La traversée.md'],
+        ['Obsidian', 'WizeCosm', '04 - Arcs', '05 - Arc 1', 'PART 02', 'Partie 2 - la découverte des îles.md'],
+        ['Obsidian', 'WizeCosm', '04 - Arcs', '05 - Arc 1', 'PART 03', 'Partie 3 - Rencontre équipages Yamés ¦ Gamé.md']
     ]
+
     
     local_files = []
     
@@ -155,8 +161,8 @@ def load_files_to_postgres(context, local_files, start_signal):
 
 @op(ins={"start_signal": In()}, out={"result": Out()})
 def delete_tmp_md(context, start_signal):
-    """Step 6: Delete the tmp_md folder."""
-    logger.info("Deleting tmp_md folder.")
+    """Step 6: Delete the contents of the tmp_md folder."""
+    logger.info("Deleting contents of tmp_md folder.")
     
     try:
         # Log the current working directory
@@ -183,29 +189,53 @@ def delete_tmp_md(context, start_signal):
             except Exception as e:
                 context.log.error(f"Failed to delete file {file}: {e}")
 
-        # Now, remove the tmp_md directory itself (if empty)
-        os.rmdir(tmp_md_path)
-        context.log.info("Deleted tmp_md folder successfully.")
+        context.log.info("Deleted contents of tmp_md folder successfully.")
         return "ok"
 
     except Exception as e:
-        context.log.error(f"Failed to delete tmp_md folder: {e}")
+        context.log.error(f"Failed to delete contents of tmp_md folder: {e}")
         return "failed"
+
 
 @op(ins={"start_signal": In()}, out={"result": Out()})
 def launch_dbt_model(context, start_signal):
-    """Step 7: Launch the dbt model."""
-    logger.info("Launching dbt model...")
+    """Step 7: Launch the dbt model and generate docs."""
+    logger.info("Launching dbt model and generating docs...")
     try:
-        # Provide the full path to the dbt project directory in the command
-        dbt_dir = 'wize_tts_dbt'  # Replace with the actual path to your dbt directory
+        # Define the dbt project directory (replace with your actual path)
+        dbt_dir = 'wize_tts_dbt'
+        
+        # Run the dbt model
         os.system(f"cd {dbt_dir} && dbt run")
         
-        context.log.info("DBT model launched successfully.")
+        # Generate dbt docs
+        os.system(f"cd {dbt_dir} && dbt docs generate")
+        
+        # Move generated docs to the 'docs' folder at the project root
+        docs_dir = 'docs'  # Folder to store docs in the project root
+        if not os.path.exists(docs_dir):
+            os.makedirs(docs_dir)
+        
+        # Change to the project root (assuming the dbt folder is in the project root)
+        os.system("cd ..")  # Move one level up to the project root
+
+        # Path to the generated docs inside the dbt project's target folder
+        generated_docs_path = os.path.join(dbt_dir, 'target')
+        
+        # Move all docs from the dbt target folder to the project's docs folder
+        if os.path.exists(generated_docs_path):
+            for file_name in os.listdir(generated_docs_path):
+                file_path = os.path.join(generated_docs_path, file_name)
+                if os.path.isfile(file_path):
+                    os.rename(file_path, os.path.join(docs_dir, file_name))
+                    context.log.info(f"Moved generated doc file: {file_name} to 'docs' folder.")
+        
+        context.log.info("DBT model and docs generation completed successfully.")
         return "ok"
     except Exception as e:
-        context.log.error(f"Error launching DBT model: {e}")
+        context.log.error(f"Error launching DBT model and generating docs: {e}")
         return "failed"
+
 
 @op(ins={"start_signal": In()})
 def generate_audio(context, start_signal):

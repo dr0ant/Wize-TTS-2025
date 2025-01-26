@@ -7,3 +7,4 @@ pyicloud
 dbt
 dbt-postgres
 gtts
+dagster-webserver

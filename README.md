@@ -109,4 +109,8 @@ The main goal of this project is to automate the following processes:
 4. For each paragraph, use AI TTS to create a speech file (e.g., MP3).
 5. Optionally, play or store the generated speech files.
 
-## Future Improvemen
+## Future Improvements
+
+- Add error handling and logging for better debugging and monitoring
+
+trigger the dagster pipeline : (venv_3_10) (venv_3_10) antoinelarcher@MacBook-Pro-de-antoine-2 Wize-TTS-2025 % dagster job execute -f dagster_main.py -j dagster_flow

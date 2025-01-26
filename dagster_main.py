@@ -1,6 +1,7 @@
 from dagster import job, op, In, Out
 from icloud import icloud_loader
-from postgres import PostgresClient
+from postgres import postgres
+from TTS_gtts import text_to_speech
 import os
 import pandas as pd
 import logging
@@ -8,7 +9,7 @@ import yaml
 import glob
 
 # Configure logging
-logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(asctime)s - %(message)s")
 logger = logging.getLogger(__name__)
 
 def load_config():
@@ -19,12 +20,12 @@ def load_config():
     logger.info("Configuration loaded successfully.")
     return config
 
-@op
+@op(out={"result": Out()})
 def test_postgres_connection(context):
     """Step 2: Test connection to PostgreSQL."""
     logger.info("Testing PostgreSQL connection.")
     config = load_config()
-    postgres_client = PostgresClient(
+    postgres_client = postgres.PostgresClient(
         host=config['postgresql']['host'],
         port=config['postgresql']['port'],
         database=config['postgresql']['database'],
@@ -35,10 +36,12 @@ def test_postgres_connection(context):
     result = postgres_client.execute_query(query)
     if result:
         context.log.info("PostgreSQL connection successful.")
+        return "ok"
     else:
         context.log.error("PostgreSQL connection failed.")
+        return "failed"
 
-@op
+@op(out={"local_files": Out()})
 def load_icloud_files(context):
     """Step 3: Load iCloud files locally."""
     logger.info("Loading files from iCloud.")
@@ -70,13 +73,12 @@ def load_icloud_files(context):
     
     return local_files
 
-
-@op
-def create_postgres_table(context):
+@op(ins={"start_signal": In()}, out={"result": Out()})
+def create_postgres_table(context, start_signal):
     """Step 4: Drop the table if it exists and create it."""
     logger.info("Creating PostgreSQL table if it doesn't exist.")
     config = load_config()
-    postgres_client = PostgresClient(
+    postgres_client = postgres.PostgresClient(
         host=config['postgresql']['host'],
         port=config['postgresql']['port'],
         database=config['postgresql']['database'],
@@ -102,15 +104,17 @@ def create_postgres_table(context):
     try:
         postgres_client.execute_query(query, fetch=False)
         context.log.info("PostgreSQL table created successfully.")
+        return "ok"
     except Exception as e:
         context.log.error(f"Error creating table: {e}")
+        return "failed"
 
-@op
-def load_files_to_postgres(context, local_files):
+@op(ins={"local_files": In(), "start_signal": In()}, out={"result": Out()})
+def load_files_to_postgres(context, local_files, start_signal):
     """Step 5: Load files into PostgreSQL."""
     logger.info("Loading files to PostgreSQL.")
     config = load_config()
-    postgres_client = PostgresClient(
+    postgres_client = postgres.PostgresClient(
         host=config['postgresql']['host'],
         port=config['postgresql']['port'],
         database=config['postgresql']['database'],
@@ -118,8 +122,8 @@ def load_files_to_postgres(context, local_files):
         password=config['postgresql']['password']
     )
 
-    for file_path in local_files:
-        try:
+    try:
+        for file_path in local_files:
             # Extract just the file name from the full path
             file_name = os.path.basename(file_path)
             local_file_path = os.path.join("tmp_md", file_name)  # Full path to the file in tmp_md directory
@@ -144,12 +148,13 @@ def load_files_to_postgres(context, local_files):
                 postgres_client.execute_query(query, params=(row['note_name'], row['content']), fetch=False)
 
             context.log.info(f"Successfully upserted file {file_name}.")
-        except Exception as e:
-            context.log.error(f"Error processing file {file_path}: {e}")
+        return "ok"
+    except Exception as e:
+        context.log.error(f"Error processing file {file_path}: {e}")
+        return "failed"
 
-
-@op
-def delete_tmp_md(context):
+@op(ins={"start_signal": In()}, out={"result": Out()})
+def delete_tmp_md(context, start_signal):
     """Step 6: Delete the tmp_md folder."""
     logger.info("Deleting tmp_md folder.")
     
@@ -161,6 +166,13 @@ def delete_tmp_md(context):
         # Identify the path of tmp_md folder
         tmp_md_path = os.path.join(current_dir, 'tmp_md')
         context.log.info(f"Path to tmp_md folder: {tmp_md_path}")
+
+        if not os.path.exists(tmp_md_path):
+            context.log.error(f"tmp_md folder does not exist at path: {tmp_md_path}")
+            return "failed"
+        
+        # List contents of the tmp_md directory
+        context.log.info(f"Contents of tmp_md folder: {os.listdir(tmp_md_path)}")
         
         # Delete all .md files in tmp_md folder
         md_files = glob.glob(os.path.join(tmp_md_path, '*.md'))
@@ -174,14 +186,14 @@ def delete_tmp_md(context):
         # Now, remove the tmp_md directory itself (if empty)
         os.rmdir(tmp_md_path)
         context.log.info("Deleted tmp_md folder successfully.")
+        return "ok"
 
     except Exception as e:
         context.log.error(f"Failed to delete tmp_md folder: {e}")
+        return "failed"
 
-
-
-@op
-def launch_dbt_model(context):
+@op(ins={"start_signal": In()}, out={"result": Out()})
+def launch_dbt_model(context, start_signal):
     """Step 7: Launch the dbt model."""
     logger.info("Launching dbt model...")
     try:
@@ -190,20 +202,42 @@ def launch_dbt_model(context):
         os.system(f"cd {dbt_dir} && dbt run")
         
         context.log.info("DBT model launched successfully.")
+        return "ok"
     except Exception as e:
         context.log.error(f"Error launching DBT model: {e}")
+        return "failed"
 
+@op(ins={"start_signal": In()})
+def generate_audio(context, start_signal):
+    """Step 8: Generate audio from text and save it as an MP3 file."""
+    logger.info("Generating audio from text.")
+    config = load_config()
+    db_params = {
+        "host": config['postgresql']['host'],
+        "port": config['postgresql']['port'],
+        "database": config['postgresql']['database'],
+        "user": config['postgresql']['user'],
+        "password": config['postgresql']['password']
+    }
+    output_dir = "generated_audio"
+    processor = text_to_speech.TTSProcessor(
+        db_params=db_params,
+        output_dir=output_dir
+    )
+    processor.generate_audio_for_paragraphs()
 
 @job
 def dagster_flow():
     """Main Dagster flow combining all steps."""
     logger.info("Starting Dagster flow.")
-    # Define dependencies explicitly between operations
+    
+    # Define the sequential execution of operations
     local_files = load_icloud_files()
-    test_postgres_connection()
-
-    create_postgres_table()
-    load_files_to_postgres(local_files)
-    delete_tmp_md()
-    launch_dbt_model()
+    conn_result = test_postgres_connection()
+    create_table_result = create_postgres_table(start_signal=conn_result)
+    loaded_files_result = load_files_to_postgres(local_files, start_signal=create_table_result)
+    delete_tmp_md_result = delete_tmp_md(start_signal=loaded_files_result)
+    dbt_launched_result = launch_dbt_model(start_signal=delete_tmp_md_result)
+    generate_audio(start_signal=dbt_launched_result)
+    
     logger.info("Dagster flow completed.")

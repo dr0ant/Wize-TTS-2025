@@ -6,3 +6,4 @@ pyicloud-ipd
 pyicloud
 dbt
 dbt-postgres
+gtts

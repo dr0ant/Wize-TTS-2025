@@ -1,0 +1,13 @@
+[32m2025-01-26 01:05:35 +0100[0m - dagster - [34mDEBUG[0m - dagster_flow - 5674fa44-5346-4e7b-a0b9-e157dc7b6182 - 18686 - LOGS_CAPTURED - Started capturing logs in process (pid: 18686).
+[32m2025-01-26 01:05:35 +0100[0m - dagster - [34mDEBUG[0m - dagster_flow - 5674fa44-5346-4e7b-a0b9-e157dc7b6182 - 18686 - create_postgres_table - STEP_START - Started execution of step "create_postgres_table".
+[32m2025-01-26 01:05:35 +0100[0m - dagster - [34mDEBUG[0m - dagster_flow - 5674fa44-5346-4e7b-a0b9-e157dc7b6182 - create_postgres_table - Loading file from: /Users/antoinelarcher/Library/CloudStorage/SynologyDrive-test/1 - Main/Wize-TTS-2025/tmp4c6ophc1/storage/5674fa44-5346-4e7b-a0b9-e157dc7b6182/test_postgres_connection/result using PickledObjectFilesystemIOManager...
+[32m2025-01-26 01:05:35 +0100[0m - dagster - [34mDEBUG[0m - dagster_flow - 5674fa44-5346-4e7b-a0b9-e157dc7b6182 - 18686 - create_postgres_table - LOADED_INPUT - Loaded input "start_signal" using input manager "io_manager", from output "result" of step "test_postgres_connection"
+[32m2025-01-26 01:05:35 +0100[0m - dagster - [34mDEBUG[0m - dagster_flow - 5674fa44-5346-4e7b-a0b9-e157dc7b6182 - 18686 - create_postgres_table - STEP_INPUT - Got input "start_signal" of type "Any". (Type check passed).
+2025-01-26 01:05:35,710 - INFO - Creating PostgreSQL table if it doesn't exist.
+2025-01-26 01:05:35,710 - INFO - Loading configuration from YAML.
+2025-01-26 01:05:35,711 - INFO - Configuration loaded successfully.
+[32m2025-01-26 01:05:36 +0100[0m - dagster - [34mINFO[0m - dagster_flow - 5674fa44-5346-4e7b-a0b9-e157dc7b6182 - create_postgres_table - PostgreSQL table created successfully.
+[32m2025-01-26 01:05:36 +0100[0m - dagster - [34mDEBUG[0m - dagster_flow - 5674fa44-5346-4e7b-a0b9-e157dc7b6182 - 18686 - create_postgres_table - STEP_OUTPUT - Yielded output "result" of type "Any". (Type check passed).
+[32m2025-01-26 01:05:36 +0100[0m - dagster - [34mDEBUG[0m - dagster_flow - 5674fa44-5346-4e7b-a0b9-e157dc7b6182 - create_postgres_table - Writing file at: /Users/antoinelarcher/Library/CloudStorage/SynologyDrive-test/1 - Main/Wize-TTS-2025/tmp4c6ophc1/storage/5674fa44-5346-4e7b-a0b9-e157dc7b6182/create_postgres_table/result using PickledObjectFilesystemIOManager...
+[32m2025-01-26 01:05:36 +0100[0m - dagster - [34mDEBUG[0m - dagster_flow - 5674fa44-5346-4e7b-a0b9-e157dc7b6182 - 18686 - create_postgres_table - HANDLED_OUTPUT - Handled output "result" using IO manager "io_manager"
+[32m2025-01-26 01:05:36 +0100[0m - dagster - [34mDEBUG[0m - dagster_flow - 5674fa44-5346-4e7b-a0b9-e157dc7b6182 - 18686 - create_postgres_table - STEP_SUCCESS - Finished execution of step "create_postgres_table" in 750ms.

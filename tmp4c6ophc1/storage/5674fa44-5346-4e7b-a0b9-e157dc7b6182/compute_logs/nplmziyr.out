@@ -1,0 +1,19 @@
+[0m00:05:48  Running with dbt=1.9.1
+[0m00:05:48  Registered adapter: postgres=1.9.0
+[0m00:05:49  [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- models.wize_tts_dbt.example
+[0m00:05:49  Found 2 models, 431 macros
+[0m00:05:49  
+[0m00:05:49  Concurrency: 1 threads (target='dev')
+[0m00:05:49  
+[0m00:05:49  1 of 2 START sql table model wizetts.paragraphes ............................... [RUN]
+[0m00:05:49  1 of 2 OK created sql table model wizetts.paragraphes .......................... [[32mSELECT 135[0m in 0.57s]
+[0m00:05:49  2 of 2 START sql table model wizetts.cleaned_paragraphes ....................... [RUN]
+[0m00:05:50  2 of 2 OK created sql table model wizetts.cleaned_paragraphes .................. [[32mSELECT 135[0m in 0.71s]
+[0m00:05:50  
+[0m00:05:50  Finished running 2 table models in 0 hours 0 minutes and 1.58 seconds (1.58s).
+[0m00:05:50  
+[0m00:05:50  [32mCompleted successfully[0m
+[0m00:05:50  
+[0m00:05:50  Done. PASS=2 WARN=0 ERROR=0 SKIP=0 TOTAL=2

@@ -1,0 +1,140 @@
+[32m2025-01-26 01:05:52 +0100[0m - dagster - [34mDEBUG[0m - dagster_flow - 5674fa44-5346-4e7b-a0b9-e157dc7b6182 - 18742 - LOGS_CAPTURED - Started capturing logs in process (pid: 18742).
+[32m2025-01-26 01:05:52 +0100[0m - dagster - [34mDEBUG[0m - dagster_flow - 5674fa44-5346-4e7b-a0b9-e157dc7b6182 - 18742 - generate_audio - STEP_START - Started execution of step "generate_audio".
+[32m2025-01-26 01:05:52 +0100[0m - dagster - [34mDEBUG[0m - dagster_flow - 5674fa44-5346-4e7b-a0b9-e157dc7b6182 - generate_audio - Loading file from: /Users/antoinelarcher/Library/CloudStorage/SynologyDrive-test/1 - Main/Wize-TTS-2025/tmp4c6ophc1/storage/5674fa44-5346-4e7b-a0b9-e157dc7b6182/launch_dbt_model/result using PickledObjectFilesystemIOManager...
+[32m2025-01-26 01:05:52 +0100[0m - dagster - [34mDEBUG[0m - dagster_flow - 5674fa44-5346-4e7b-a0b9-e157dc7b6182 - 18742 - generate_audio - LOADED_INPUT - Loaded input "start_signal" using input manager "io_manager", from output "result" of step "launch_dbt_model"
+[32m2025-01-26 01:05:52 +0100[0m - dagster - [34mDEBUG[0m - dagster_flow - 5674fa44-5346-4e7b-a0b9-e157dc7b6182 - 18742 - generate_audio - STEP_INPUT - Got input "start_signal" of type "Any". (Type check passed).
+2025-01-26 01:05:52,724 - INFO - Generating audio from text.
+2025-01-26 01:05:52,724 - INFO - Loading configuration from YAML.
+2025-01-26 01:05:52,725 - INFO - Configuration loaded successfully.
+2025-01-26 01:05:52,725 - INFO - Initializing TTSProcessor with language: fr
+2025-01-26 01:05:52,725 - INFO - Initializing TTSProcessor with language: fr
+2025-01-26 01:05:52,725 - INFO - Starting audio generation for paragraphs...
+2025-01-26 01:05:52,725 - INFO - Starting audio generation for paragraphs...
+2025-01-26 01:05:52,725 - INFO - Fetching paragraph data from PostgreSQL...
+2025-01-26 01:05:52,725 - INFO - Fetching paragraph data from PostgreSQL...
+/Users/antoinelarcher/Library/CloudStorage/SynologyDrive-test/1 - Main/Wize-TTS-2025/TTS_gtts/text_to_speech.py:68: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  df = pd.read_sql(query, connection)
+2025-01-26 01:05:53,422 - INFO - Fetched 135 paragraphs from the database.
+2025-01-26 01:05:53,422 - INFO - Fetched 135 paragraphs from the database.
+2025-01-26 01:05:53,422 - INFO - Converting text to speech for file: Phase 1 - les Séquelles de la guerre.md_1.mp3
+2025-01-26 01:05:53,422 - INFO - Converting text to speech for file: Phase 1 - les Séquelles de la guerre.md_1.mp3
+2025-01-26 01:05:54,972 - INFO - Audio saved as: generated_audio/Phase 1 - les Séquelles de la guerre.md_1.mp3
+2025-01-26 01:05:54,972 - INFO - Audio saved as: generated_audio/Phase 1 - les Séquelles de la guerre.md_1.mp3
+2025-01-26 01:05:54,973 - INFO - Converting text to speech for file: Phase 1 - les Séquelles de la guerre.md_2.mp3
+2025-01-26 01:05:54,973 - INFO - Converting text to speech for file: Phase 1 - les Séquelles de la guerre.md_2.mp3
+2025-01-26 01:05:56,452 - INFO - Audio saved as: generated_audio/Phase 1 - les Séquelles de la guerre.md_2.mp3
+2025-01-26 01:05:56,452 - INFO - Audio saved as: generated_audio/Phase 1 - les Séquelles de la guerre.md_2.mp3
+2025-01-26 01:05:56,453 - INFO - Converting text to speech for file: Phase 1 - les Séquelles de la guerre.md_3.mp3
+2025-01-26 01:05:56,453 - INFO - Converting text to speech for file: Phase 1 - les Séquelles de la guerre.md_3.mp3
+2025-01-26 01:05:56,621 - INFO - Audio saved as: generated_audio/Phase 1 - les Séquelles de la guerre.md_3.mp3
+2025-01-26 01:05:56,621 - INFO - Audio saved as: generated_audio/Phase 1 - les Séquelles de la guerre.md_3.mp3
+2025-01-26 01:05:56,621 - INFO - Converting text to speech for file: Phase 1 - les Séquelles de la guerre.md_4.mp3
+2025-01-26 01:05:56,621 - INFO - Converting text to speech for file: Phase 1 - les Séquelles de la guerre.md_4.mp3
+2025-01-26 01:05:57,617 - INFO - Audio saved as: generated_audio/Phase 1 - les Séquelles de la guerre.md_4.mp3
+2025-01-26 01:05:57,617 - INFO - Audio saved as: generated_audio/Phase 1 - les Séquelles de la guerre.md_4.mp3
+2025-01-26 01:05:57,618 - INFO - Converting text to speech for file: Phase 1 - les Séquelles de la guerre.md_5.mp3
+2025-01-26 01:05:57,618 - INFO - Converting text to speech for file: Phase 1 - les Séquelles de la guerre.md_5.mp3
+2025-01-26 01:05:57,947 - INFO - Audio saved as: generated_audio/Phase 1 - les Séquelles de la guerre.md_5.mp3
+2025-01-26 01:05:57,947 - INFO - Audio saved as: generated_audio/Phase 1 - les Séquelles de la guerre.md_5.mp3
+2025-01-26 01:05:57,948 - INFO - Converting text to speech for file: Phase 1 - les Séquelles de la guerre.md_6.mp3
+2025-01-26 01:05:57,948 - INFO - Converting text to speech for file: Phase 1 - les Séquelles de la guerre.md_6.mp3
+2025-01-26 01:05:59,222 - INFO - Audio saved as: generated_audio/Phase 1 - les Séquelles de la guerre.md_6.mp3
+2025-01-26 01:05:59,222 - INFO - Audio saved as: generated_audio/Phase 1 - les Séquelles de la guerre.md_6.mp3
+2025-01-26 01:05:59,222 - INFO - Converting text to speech for file: Phase 1 - les Séquelles de la guerre.md_7.mp3
+2025-01-26 01:05:59,222 - INFO - Converting text to speech for file: Phase 1 - les Séquelles de la guerre.md_7.mp3
+2025-01-26 01:06:00,508 - INFO - Audio saved as: generated_audio/Phase 1 - les Séquelles de la guerre.md_7.mp3
+2025-01-26 01:06:00,508 - INFO - Audio saved as: generated_audio/Phase 1 - les Séquelles de la guerre.md_7.mp3
+2025-01-26 01:06:00,509 - INFO - Converting text to speech for file: Phase 1 - les Séquelles de la guerre.md_8.mp3
+2025-01-26 01:06:00,509 - INFO - Converting text to speech for file: Phase 1 - les Séquelles de la guerre.md_8.mp3
+2025-01-26 01:06:01,322 - INFO - Audio saved as: generated_audio/Phase 1 - les Séquelles de la guerre.md_8.mp3
+2025-01-26 01:06:01,322 - INFO - Audio saved as: generated_audio/Phase 1 - les Séquelles de la guerre.md_8.mp3
+2025-01-26 01:06:01,323 - INFO - Converting text to speech for file: Phase 1 - les Séquelles de la guerre.md_9.mp3
+2025-01-26 01:06:01,323 - INFO - Converting text to speech for file: Phase 1 - les Séquelles de la guerre.md_9.mp3
+2025-01-26 01:06:02,159 - INFO - Audio saved as: generated_audio/Phase 1 - les Séquelles de la guerre.md_9.mp3
+2025-01-26 01:06:02,159 - INFO - Audio saved as: generated_audio/Phase 1 - les Séquelles de la guerre.md_9.mp3
+2025-01-26 01:06:02,159 - INFO - Converting text to speech for file: Phase 1 - les Séquelles de la guerre.md_10.mp3
+2025-01-26 01:06:02,159 - INFO - Converting text to speech for file: Phase 1 - les Séquelles de la guerre.md_10.mp3
+2025-01-26 01:06:03,442 - INFO - Audio saved as: generated_audio/Phase 1 - les Séquelles de la guerre.md_10.mp3
+2025-01-26 01:06:03,442 - INFO - Audio saved as: generated_audio/Phase 1 - les Séquelles de la guerre.md_10.mp3
+2025-01-26 01:06:03,442 - INFO - Converting text to speech for file: Phase 1 - les Séquelles de la guerre.md_11.mp3
+2025-01-26 01:06:03,442 - INFO - Converting text to speech for file: Phase 1 - les Séquelles de la guerre.md_11.mp3
+2025-01-26 01:06:04,535 - INFO - Audio saved as: generated_audio/Phase 1 - les Séquelles de la guerre.md_11.mp3
+2025-01-26 01:06:04,535 - INFO - Audio saved as: generated_audio/Phase 1 - les Séquelles de la guerre.md_11.mp3
+2025-01-26 01:06:04,535 - INFO - Converting text to speech for file: Phase 1 - les Séquelles de la guerre.md_12.mp3
+2025-01-26 01:06:04,535 - INFO - Converting text to speech for file: Phase 1 - les Séquelles de la guerre.md_12.mp3
+2025-01-26 01:06:06,172 - INFO - Audio saved as: generated_audio/Phase 1 - les Séquelles de la guerre.md_12.mp3
+2025-01-26 01:06:06,172 - INFO - Audio saved as: generated_audio/Phase 1 - les Séquelles de la guerre.md_12.mp3
+2025-01-26 01:06:06,172 - INFO - Converting text to speech for file: Phase 1 - les Séquelles de la guerre.md_13.mp3
+2025-01-26 01:06:06,172 - INFO - Converting text to speech for file: Phase 1 - les Séquelles de la guerre.md_13.mp3
+2025-01-26 01:06:06,809 - INFO - Audio saved as: generated_audio/Phase 1 - les Séquelles de la guerre.md_13.mp3
+2025-01-26 01:06:06,809 - INFO - Audio saved as: generated_audio/Phase 1 - les Séquelles de la guerre.md_13.mp3
+2025-01-26 01:06:06,810 - INFO - Converting text to speech for file: Phase 1 - les Séquelles de la guerre.md_14.mp3
+2025-01-26 01:06:06,810 - INFO - Converting text to speech for file: Phase 1 - les Séquelles de la guerre.md_14.mp3
+2025-01-26 01:06:07,050 - INFO - Audio saved as: generated_audio/Phase 1 - les Séquelles de la guerre.md_14.mp3
+2025-01-26 01:06:07,050 - INFO - Audio saved as: generated_audio/Phase 1 - les Séquelles de la guerre.md_14.mp3
+2025-01-26 01:06:07,051 - INFO - Converting text to speech for file: Phase 2 - Mia.md_1.mp3
+2025-01-26 01:06:07,051 - INFO - Converting text to speech for file: Phase 2 - Mia.md_1.mp3
+2025-01-26 01:06:09,830 - INFO - Audio saved as: generated_audio/Phase 2 - Mia.md_1.mp3
+2025-01-26 01:06:09,830 - INFO - Audio saved as: generated_audio/Phase 2 - Mia.md_1.mp3
+2025-01-26 01:06:09,830 - INFO - Converting text to speech for file: Phase 2 - Mia.md_2.mp3
+2025-01-26 01:06:09,830 - INFO - Converting text to speech for file: Phase 2 - Mia.md_2.mp3
+2025-01-26 01:06:11,519 - INFO - Audio saved as: generated_audio/Phase 2 - Mia.md_2.mp3
+2025-01-26 01:06:11,519 - INFO - Audio saved as: generated_audio/Phase 2 - Mia.md_2.mp3
+2025-01-26 01:06:11,519 - INFO - Converting text to speech for file: Phase 2 - Mia.md_3.mp3
+2025-01-26 01:06:11,519 - INFO - Converting text to speech for file: Phase 2 - Mia.md_3.mp3
+2025-01-26 01:06:12,991 - INFO - Audio saved as: generated_audio/Phase 2 - Mia.md_3.mp3
+2025-01-26 01:06:12,991 - INFO - Audio saved as: generated_audio/Phase 2 - Mia.md_3.mp3
+2025-01-26 01:06:12,992 - INFO - Converting text to speech for file: Phase 2 - Mia.md_4.mp3
+2025-01-26 01:06:12,992 - INFO - Converting text to speech for file: Phase 2 - Mia.md_4.mp3
+2025-01-26 01:06:14,329 - INFO - Audio saved as: generated_audio/Phase 2 - Mia.md_4.mp3
+2025-01-26 01:06:14,329 - INFO - Audio saved as: generated_audio/Phase 2 - Mia.md_4.mp3
+2025-01-26 01:06:14,330 - INFO - Converting text to speech for file: Phase 2 - Mia.md_5.mp3
+2025-01-26 01:06:14,330 - INFO - Converting text to speech for file: Phase 2 - Mia.md_5.mp3
+2025-01-26 01:06:14,797 - INFO - Audio saved as: generated_audio/Phase 2 - Mia.md_5.mp3
+2025-01-26 01:06:14,797 - INFO - Audio saved as: generated_audio/Phase 2 - Mia.md_5.mp3
+2025-01-26 01:06:14,798 - INFO - Converting text to speech for file: Phase 2 - Mia.md_6.mp3
+2025-01-26 01:06:14,798 - INFO - Converting text to speech for file: Phase 2 - Mia.md_6.mp3
+2025-01-26 01:06:15,049 - INFO - Audio saved as: generated_audio/Phase 2 - Mia.md_6.mp3
+2025-01-26 01:06:15,049 - INFO - Audio saved as: generated_audio/Phase 2 - Mia.md_6.mp3
+2025-01-26 01:06:15,050 - INFO - Converting text to speech for file: Phase 2 - Mia.md_7.mp3
+2025-01-26 01:06:15,050 - INFO - Converting text to speech for file: Phase 2 - Mia.md_7.mp3
+2025-01-26 01:06:15,326 - INFO - Audio saved as: generated_audio/Phase 2 - Mia.md_7.mp3
+2025-01-26 01:06:15,326 - INFO - Audio saved as: generated_audio/Phase 2 - Mia.md_7.mp3
+2025-01-26 01:06:15,326 - INFO - Converting text to speech for file: Phase 2 - Mia.md_8.mp3
+2025-01-26 01:06:15,326 - INFO - Converting text to speech for file: Phase 2 - Mia.md_8.mp3
+2025-01-26 01:06:16,877 - INFO - Audio saved as: generated_audio/Phase 2 - Mia.md_8.mp3
+2025-01-26 01:06:16,877 - INFO - Audio saved as: generated_audio/Phase 2 - Mia.md_8.mp3
+2025-01-26 01:06:16,878 - INFO - Converting text to speech for file: Phase 2 - Mia.md_9.mp3
+2025-01-26 01:06:16,878 - INFO - Converting text to speech for file: Phase 2 - Mia.md_9.mp3
+2025-01-26 01:06:18,243 - INFO - Audio saved as: generated_audio/Phase 2 - Mia.md_9.mp3
+2025-01-26 01:06:18,243 - INFO - Audio saved as: generated_audio/Phase 2 - Mia.md_9.mp3
+2025-01-26 01:06:18,243 - INFO - Converting text to speech for file: Phase 2 - Mia.md_10.mp3
+2025-01-26 01:06:18,243 - INFO - Converting text to speech for file: Phase 2 - Mia.md_10.mp3
+2025-01-26 01:06:19,702 - INFO - Audio saved as: generated_audio/Phase 2 - Mia.md_10.mp3
+2025-01-26 01:06:19,702 - INFO - Audio saved as: generated_audio/Phase 2 - Mia.md_10.mp3
+2025-01-26 01:06:19,702 - INFO - Converting text to speech for file: Phase 2 - Mia.md_11.mp3
+2025-01-26 01:06:19,702 - INFO - Converting text to speech for file: Phase 2 - Mia.md_11.mp3
+2025-01-26 01:06:20,408 - INFO - Audio saved as: generated_audio/Phase 2 - Mia.md_11.mp3
+2025-01-26 01:06:20,408 - INFO - Audio saved as: generated_audio/Phase 2 - Mia.md_11.mp3
+2025-01-26 01:06:20,408 - INFO - Converting text to speech for file: Phase 2 - Mia.md_12.mp3
+2025-01-26 01:06:20,408 - INFO - Converting text to speech for file: Phase 2 - Mia.md_12.mp3
+2025-01-26 01:06:22,525 - INFO - Audio saved as: generated_audio/Phase 2 - Mia.md_12.mp3
+2025-01-26 01:06:22,525 - INFO - Audio saved as: generated_audio/Phase 2 - Mia.md_12.mp3
+2025-01-26 01:06:22,525 - INFO - Converting text to speech for file: Phase 2 - Mia.md_13.mp3
+2025-01-26 01:06:22,525 - INFO - Converting text to speech for file: Phase 2 - Mia.md_13.mp3
+2025-01-26 01:06:23,288 - INFO - Audio saved as: generated_audio/Phase 2 - Mia.md_13.mp3
+2025-01-26 01:06:23,288 - INFO - Audio saved as: generated_audio/Phase 2 - Mia.md_13.mp3
+2025-01-26 01:06:23,288 - INFO - Converting text to speech for file: Phase 2 - Mia.md_14.mp3
+2025-01-26 01:06:23,288 - INFO - Converting text to speech for file: Phase 2 - Mia.md_14.mp3
+2025-01-26 01:06:23,602 - INFO - Audio saved as: generated_audio/Phase 2 - Mia.md_14.mp3
+2025-01-26 01:06:23,602 - INFO - Audio saved as: generated_audio/Phase 2 - Mia.md_14.mp3
+2025-01-26 01:06:23,602 - INFO - Converting text to speech for file: Phase 2 - Mia.md_15.mp3
+2025-01-26 01:06:23,602 - INFO - Converting text to speech for file: Phase 2 - Mia.md_15.mp3
+2025-01-26 01:06:24,281 - INFO - Audio saved as: generated_audio/Phase 2 - Mia.md_15.mp3
+2025-01-26 01:06:24,281 - INFO - Audio saved as: generated_audio/Phase 2 - Mia.md_15.mp3
+2025-01-26 01:06:24,282 - INFO - Converting text to speech for file: Phase 2 - Mia.md_16.mp3
+2025-01-26 01:06:24,282 - INFO - Converting text to speech for file: Phase 2 - Mia.md_16.mp3
+2025-01-26 01:06:25,171 - INFO - Audio saved as: generated_audio/Phase 2 - Mia.md_16.mp3
+2025-01-26 01:06:25,171 - INFO - Audio saved as: generated_audio/Phase 2 - Mia.md_16.mp3
+2025-01-26 01:06:25,171 - INFO - Converting text to speech for file: Phase 2 - Mia.md_17.mp3
+2025-01-26 01:06:25,171 - INFO - Converting text to speech for file: Phase 2 - Mia.md_17.mp3

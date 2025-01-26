@@ -1,0 +1,33 @@
+[32m2025-01-26 01:05:34 +0100[0m - dagster - [34mDEBUG[0m - dagster_flow - 5674fa44-5346-4e7b-a0b9-e157dc7b6182 - 18666 - LOGS_CAPTURED - Started capturing logs in process (pid: 18666).
+[32m2025-01-26 01:05:34 +0100[0m - dagster - [34mDEBUG[0m - dagster_flow - 5674fa44-5346-4e7b-a0b9-e157dc7b6182 - 18666 - load_icloud_files - STEP_START - Started execution of step "load_icloud_files".
+2025-01-26 01:05:34,344 - INFO - Loading files from iCloud.
+2025-01-26 01:05:34,344 - INFO - Loading configuration from YAML.
+2025-01-26 01:05:34,345 - INFO - Configuration loaded successfully.
+2025-01-26 01:05:34,345 - INFO - Initializing iCloud connection for user: larcher.antoine@hotmail.fr
+2025-01-26 01:05:34,865 - INFO - iCloud connection established successfully.
+2025-01-26 01:05:34,865 - INFO - Attempting to fetch file: ['Obsidian', 'WizeCosm', '04 - Arcs', '01 - Phase 1', 'Phase 1 - les Séquelles de la guerre.md']
+2025-01-26 01:05:38,744 - INFO - File found: Phase 1 - les Séquelles de la guerre.md
+2025-01-26 01:05:38,745 - INFO - Date modified: 2025-01-25 14:57:29
+2025-01-26 01:05:38,746 - INFO - File size: 2730 bytes
+2025-01-26 01:05:38,746 - INFO - File type: file
+2025-01-26 01:05:38,746 - INFO - Downloading content of file: Phase 1 - les Séquelles de la guerre.md
+2025-01-26 01:05:39,808 - INFO - File Phase 1 - les Séquelles de la guerre.md downloaded successfully to tmp_md/Phase 1 - les Séquelles de la guerre.md.
+2025-01-26 01:05:39,808 - INFO - File Content (Preview): tmp_md/Phase 1 - les Séquelles de la guerre.md...
+
+[32m2025-01-26 01:05:39 +0100[0m - dagster - [34mINFO[0m - dagster_flow - 5674fa44-5346-4e7b-a0b9-e157dc7b6182 - load_icloud_files - File loaded: tmp_md/Obsidian/WizeCosm/04 - Arcs/01 - Phase 1/Phase 1 - les Séquelles de la guerre.md
+2025-01-26 01:05:39,814 - INFO - Initializing iCloud connection for user: larcher.antoine@hotmail.fr
+2025-01-26 01:05:40,185 - INFO - iCloud connection established successfully.
+2025-01-26 01:05:40,185 - INFO - Attempting to fetch file: ['Obsidian', 'WizeCosm', '04 - Arcs', '02 - Phase 2', 'Phase 2 - Mia.md']
+2025-01-26 01:05:42,325 - INFO - File found: Phase 2 - Mia.md
+2025-01-26 01:05:42,325 - INFO - Date modified: 2024-04-23 17:17:34
+2025-01-26 01:05:42,325 - INFO - File size: 30173 bytes
+2025-01-26 01:05:42,325 - INFO - File type: file
+2025-01-26 01:05:42,325 - INFO - Downloading content of file: Phase 2 - Mia.md
+2025-01-26 01:05:43,801 - INFO - File Phase 2 - Mia.md downloaded successfully to tmp_md/Phase 2 - Mia.md.
+2025-01-26 01:05:43,801 - INFO - File Content (Preview): tmp_md/Phase 2 - Mia.md...
+
+[32m2025-01-26 01:05:43 +0100[0m - dagster - [34mINFO[0m - dagster_flow - 5674fa44-5346-4e7b-a0b9-e157dc7b6182 - load_icloud_files - File loaded: tmp_md/Obsidian/WizeCosm/04 - Arcs/02 - Phase 2/Phase 2 - Mia.md
+[32m2025-01-26 01:05:43 +0100[0m - dagster - [34mDEBUG[0m - dagster_flow - 5674fa44-5346-4e7b-a0b9-e157dc7b6182 - 18666 - load_icloud_files - STEP_OUTPUT - Yielded output "local_files" of type "Any". (Type check passed).
+[32m2025-01-26 01:05:43 +0100[0m - dagster - [34mDEBUG[0m - dagster_flow - 5674fa44-5346-4e7b-a0b9-e157dc7b6182 - load_icloud_files - Writing file at: /Users/antoinelarcher/Library/CloudStorage/SynologyDrive-test/1 - Main/Wize-TTS-2025/tmp4c6ophc1/storage/5674fa44-5346-4e7b-a0b9-e157dc7b6182/load_icloud_files/local_files using PickledObjectFilesystemIOManager...
+[32m2025-01-26 01:05:43 +0100[0m - dagster - [34mDEBUG[0m - dagster_flow - 5674fa44-5346-4e7b-a0b9-e157dc7b6182 - 18666 - load_icloud_files - HANDLED_OUTPUT - Handled output "local_files" using IO manager "io_manager"
+[32m2025-01-26 01:05:43 +0100[0m - dagster - [34mDEBUG[0m - dagster_flow - 5674fa44-5346-4e7b-a0b9-e157dc7b6182 - 18666 - load_icloud_files - STEP_SUCCESS - Finished execution of step "load_icloud_files" in 9.49s.
